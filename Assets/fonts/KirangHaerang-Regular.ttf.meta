@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 1076e687ca33641d5940d521e2f48e06
+timeCreated: 1523438937
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Kirang Haerang
+  fontNames:
+  - Kirang Haerang
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
