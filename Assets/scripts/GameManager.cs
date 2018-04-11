@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour {
 	void OnSceneLoaded(Scene scene, LoadSceneMode mode)
 	{
 		if (SceneManager.GetActiveScene ().name == "Game") {
-			cameraC = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<CameraController>();
+			//cameraC = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<CameraController>();
 			//InitNewGame ();
 		}
 

@@ -24,6 +24,9 @@ GameObject:
   - component: {fileID: 61205452779850752}
   - component: {fileID: 50999394126990712}
   - component: {fileID: 114003572877720648}
+  - component: {fileID: 114805972768970146}
+  - component: {fileID: 114707917335997728}
+  - component: {fileID: 114449607775286554}
   m_Layer: 0
   m_Name: player2
   m_TagString: Player2
@@ -120,6 +123,72 @@ MonoBehaviour:
   runningSpeed: 50000
   rotationSpeed: 10
   entities: []
+--- !u!114 &114449607775286554
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1062249520500114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TransformSyncMode: 2
+  m_SendInterval: 0.1
+  m_SyncRotationAxis: 3
+  m_RotationSyncCompression: 0
+  m_SyncSpin: 0
+  m_MovementTheshold: 0.001
+  m_VelocityThreshold: 0.0001
+  m_SnapThreshold: 5
+  m_InterpolateRotation: 10
+  m_InterpolateMovement: 1
+--- !u!114 &114707917335997728
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1062249520500114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 222
+    i1: 210
+    i2: 45
+    i3: 31
+    i4: 211
+    i5: 9
+    i6: 20
+    i7: 29
+    i8: 91
+    i9: 220
+    i10: 249
+    i11: 245
+    i12: 248
+    i13: 164
+    i14: 210
+    i15: 57
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 1
+--- !u!114 &114805972768970146
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1062249520500114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab9e39a95e1964fcd8e2bb3f747efad3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  componentsToDisable:
+  - {fileID: 114003572877720648}
 --- !u!212 &212824476146996322
 SpriteRenderer:
   m_ObjectHideFlags: 1

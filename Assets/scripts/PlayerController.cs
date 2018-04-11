@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour {
 		rb = GetComponent<Rigidbody2D>();
 		entities = new List<string> { "player", "pressure", "conducting"};
 
+//		GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<CameraController> ().player = gameObject;
 	}
 
 	void FixedUpdate () {
