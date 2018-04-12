@@ -762,6 +762,11 @@ Prefab:
       propertyPath: indicators.Array.size
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 114158455638219742, guid: a561175a431544739b161775e44af34a,
+        type: 2}
+      propertyPath: elementsToInteractWithTag.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4078768219356262, guid: a561175a431544739b161775e44af34a, type: 2}
       propertyPath: m_LocalPosition.x
       value: 15.73
@@ -828,6 +833,11 @@ Prefab:
         type: 2}
       propertyPath: highlightColor.rgba
       value: 4280221695
+      objectReference: {fileID: 0}
+    - target: {fileID: 114158455638219742, guid: a561175a431544739b161775e44af34a,
+        type: 2}
+      propertyPath: elementsToInteractWithTag.Array.data[0]
+      value: Door1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a561175a431544739b161775e44af34a, type: 2}
@@ -5483,6 +5493,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 1753983004}
     m_Modifications:
+    - target: {fileID: 114158455638219742, guid: a561175a431544739b161775e44af34a,
+        type: 2}
+      propertyPath: elementsToInteractWithTag.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4078768219356262, guid: a561175a431544739b161775e44af34a, type: 2}
       propertyPath: m_LocalPosition.x
       value: 21.48
@@ -5553,6 +5568,11 @@ Prefab:
         type: 2}
       propertyPath: highlightColor.rgba
       value: 4280221695
+      objectReference: {fileID: 0}
+    - target: {fileID: 114158455638219742, guid: a561175a431544739b161775e44af34a,
+        type: 2}
+      propertyPath: elementsToInteractWithTag.Array.data[0]
+      value: Door1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a561175a431544739b161775e44af34a, type: 2}
