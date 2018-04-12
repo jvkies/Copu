@@ -30,12 +30,15 @@ public class PressureButton : MonoBehaviour, ITrigger {
 	}
 	
 	public void Trigger(List<string> entities, float mass) {
+		Debug.Log ("trigger enter");
 		if (entities.Contains ("pressure")) {
 			ChangePressure (mass);
 		}
 	}
 
 	public void StopTrigger(List<string> entities, float mass) {
+		Debug.Log ("trigger exit");
+
 		if (entities.Contains ("pressure")) {
 			ChangePressure (-mass);
 		}
