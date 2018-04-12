@@ -7,6 +7,8 @@ public class WinZone : MonoBehaviour, ITrigger {
 
 	private int playerCounter;
 
+	public float loadDelayTime=3;
+	public string transferToSceneName;
 	public GameObject winPanel;
 	public GameObject waitingForPlayerPanel;
 
@@ -50,6 +52,15 @@ public class WinZone : MonoBehaviour, ITrigger {
 			winPanel.SetActive(true);
 
 			Debug.Log ("You win");
+
+			Invoke ("LoadSceneLazy", loadDelayTime);
 		}
 	}
+
+	public void LoadSceneLazy() {
+		if (transferToSceneName != "") {
+			GameManager.instance.LoadScene (transferToSceneName);
+		}
+	}
+
 }

@@ -40,6 +40,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isGameLost: 0
   isPlayerAbleToInteract: 1
+  gameMode: single
+  activePlayerTag: Player
+  player1Prefab: {fileID: 1923111091177840, guid: bf38fa7d44fa74a1691157b4d158972c,
+    type: 2}
+  player2Prefab: {fileID: 1744877230314766, guid: ded22d1fd309141d5bdcf9f5f8a4d239,
+    type: 2}
 --- !u!224 &224548208438525722
 RectTransform:
   m_ObjectHideFlags: 1

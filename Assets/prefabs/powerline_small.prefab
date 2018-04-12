@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4050503072492082}
   - component: {fileID: 212981582061247364}
   m_Layer: 0
-  m_Name: powerline
+  m_Name: powerline_small
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 639658529
   m_SortingLayer: 1
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: d76fbd8a17609467398ce139d2fc6486, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5cfe95d626023490ebcc7446907adc9e, type: 3}
   m_Color: {r: 0.6666667, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0

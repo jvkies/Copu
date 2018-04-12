@@ -8,13 +8,19 @@ public class PlayerController : MonoBehaviour {
 	Rigidbody2D rb;
 	public float runningSpeed;
 	public float rotationSpeed;
+	public GameObject playerCam;
 	public List<string> entities;
 
 	void Start () {
 		rb = GetComponent<Rigidbody2D>();
 		entities = new List<string> { "player", "pressure", "conducting"};
 
-//		GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<CameraController> ().player = gameObject;
+		if (GameManager.instance.gameMode == "single") {
+			playerCam.SetActive (false);
+			if (gameObject.tag == "Player") {
+				GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<CameraController> ().player = gameObject;
+			}
+		}
 	}
 
 	void FixedUpdate () {
@@ -22,8 +28,13 @@ public class PlayerController : MonoBehaviour {
 		// Player movement 
 
 		rb.velocity = Vector2.zero;
-		if (GameManager.instance.isPlayerAbleToInteract && !GameManager.instance.isGameLost && GameManager.instance.activePlayerTag == gameObject.tag)
+		if (GameManager.instance.isPlayerAbleToInteract && !GameManager.instance.isGameLost )
 		{
+			if (GameManager.instance.gameMode == "single" && gameObject.tag != GameManager.instance.activePlayerTag) {
+				// player is in single player mode and other character is active
+				return;
+			}
+				
 			// Player movement
 
 			Vector2 move = new Vector2();
@@ -49,14 +60,14 @@ public class PlayerController : MonoBehaviour {
 
 
 	void OnTriggerEnter2D(Collider2D other) {
-		other.GetComponent<ITrigger> ().Trigger (entities, GetComponent<Rigidbody2D> ().mass);
+		other.GetComponent<ITrigger> ().Trigger (entities, rb.mass);
 	//	if (other.gameObject.CompareTag("PressureButton") && entities.Contains("pressure")) {
 	//		other.gameObject.GetComponent<PressureButton>().ChangePressure(gameObject.GetComponent<Rigidbody2D>().mass);
 	//	}
 	}
 
 	void OnTriggerExit2D(Collider2D other) {
-		other.GetComponent<ITrigger> ().StopTrigger (entities, GetComponent<Rigidbody2D> ().mass);
+		other.GetComponent<ITrigger> ().StopTrigger (entities, rb.mass);
 	//	if (other.gameObject.CompareTag("PressureButton") && entities.Contains("pressure")) {
 	//		other.gameObject.GetComponent<PressureButton>().ChangePressure(-gameObject.GetComponent<Rigidbody2D>().mass);
 	//	}

@@ -7,6 +7,9 @@ TagManager:
   - Door1
   - PressureButton
   - Player2
+  - NetworkManager
+  - Door2
+  - Door3
   layers:
   - Default
   - TransparentFX

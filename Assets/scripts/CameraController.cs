@@ -18,7 +18,7 @@ public class CameraController : MonoBehaviour {
 		}
 	}
 
-	// this is for local coop
+	// this is for single player
 	public void SwitchCameraFocus(string newPlayerTag) {
 		if (GameManager.instance.isPlayerAbleToInteract) {
 			player = GameObject.FindGameObjectWithTag (newPlayerTag);

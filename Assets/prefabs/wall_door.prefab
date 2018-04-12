@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4962336839932886}
   - component: {fileID: 212485588583227626}
   - component: {fileID: 61057451332339696}
-  - component: {fileID: 61889938516505690}
   - component: {fileID: 114561351540431652}
   m_Layer: 0
   m_Name: door
@@ -113,31 +112,6 @@ PolygonCollider2D:
       - {x: 0.049999997, y: 0.83}
       - {x: 0.04, y: 1.5}
 --- !u!61 &61057451332339696
-BoxCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1837813908686576}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.25, y: 1}
-    newSize: {x: 0.25, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.25, y: 1}
-  m_EdgeRadius: 0
---- !u!61 &61889938516505690
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}

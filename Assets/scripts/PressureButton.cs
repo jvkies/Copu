@@ -6,9 +6,9 @@ public class PressureButton : MonoBehaviour, ITrigger {
 
 	private float pressureTreshold = 1f;	// how much pressure needed to push the button
 	private Color startColor;
-	private GameObject interactableElement;
+	private List<GameObject> interactableElements;
 
-	public string elementToInteractWithTag;
+	public string[] elementsToInteractWithTag;
 	public float weightToReact;
 	public float pressureAmount;	// current amount of pressure on the button
 	public Color32 highlightColor = new Color32(255,30,30,255);
@@ -16,11 +16,16 @@ public class PressureButton : MonoBehaviour, ITrigger {
 
 	// Use this for initialization
 	void Start () {
+		interactableElements = new List<GameObject>();
 		startColor = GetComponent<SpriteRenderer> ().color;
 		try {
-			interactableElement = GameObject.FindGameObjectWithTag (elementToInteractWithTag);
+			foreach (string tag in elementsToInteractWithTag) {
+				foreach (GameObject interactableElement in GameObject.FindGameObjectsWithTag (tag)) {
+					interactableElements.Add(interactableElement);
+				}
+			}
 		} catch {
-			Debug.Log ("PressureButton couldn't find interactable: " + elementToInteractWithTag);
+			Debug.Log ("PressureButton couldn't find interactable Tag");
 		}
 	}
 	
@@ -41,12 +46,18 @@ public class PressureButton : MonoBehaviour, ITrigger {
 
 		if (pressureAmount >= pressureTreshold && pressureAmount-amount < pressureTreshold) {
 			GetComponent<SpriteRenderer> ().color = highlightColor;
-			interactableElement.GetComponent<IActor> ().Interact (true);
 			HighlightIndicators (true);
+
+			foreach (GameObject interactableElement in interactableElements) {
+				interactableElement.GetComponent<IActor> ().Interact (true);
+			}
 		} else if (pressureAmount < pressureTreshold && pressureAmount-amount > pressureTreshold) {
 			GetComponent<SpriteRenderer> ().color = startColor;
-			interactableElement.GetComponent<IActor> ().Interact (false);
 			HighlightIndicators (false);
+
+			foreach (GameObject interactableElement in interactableElements) {
+				interactableElement.GetComponent<IActor> ().Interact (false);
+			}
 		}
 	}
 
