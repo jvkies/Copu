@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BoxController : BaseBox {
+public class BoxConductor : BaseBox, AConductor {
 
-		
 }

@@ -1,0 +1,15 @@
+Colors
+
+Backround
+FF8E8EFF - light red
+C3C0FFFF - light blue
+8AFD8EFF - light green
+ 
+Buttons (basecolor - highlighted)
+9B9F00FF - FFFF1EFF - yellow
+2122FFFF - 9A97FFFF - blue
+AA0000FF - FF3229FF - red
+00A000FF - 00FF00FF - green
+
+Menu
+2c249d - 5c5fd8 - border

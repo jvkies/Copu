@@ -7,7 +7,6 @@ public class PlayerController : MonoBehaviour, IActor {
 
 	private Color startColor;
 	private Rigidbody2D rb;
-	private List<IActor> connectedActors;
 	public List<GameObject> goImPowering;
 	public List<GameObject> powerSources;
 	public List<string> powerOrigins;				// list of unique power origins (button, player..)
@@ -26,7 +25,6 @@ public class PlayerController : MonoBehaviour, IActor {
 		powerSources = new List<GameObject> {};
 		powerOrigins = new List<string> {};
 
-		connectedActors = new List<IActor> ();
 		rb = GetComponent<Rigidbody2D>();
 		entities = new List<string> { "player", "pressure"};
 		actions = new Dictionary<string, string> (){{"poweron", "false"},{"mass", rb.mass.ToString()},{"color",""}};
@@ -85,7 +83,6 @@ public class PlayerController : MonoBehaviour, IActor {
 			if (actions.ContainsKey ("poweron") && actions ["poweron"] != "false" && !goImPowering.Contains (other.gameObject)) {
 				goImPowering.Add (other.gameObject);
 			}
-			//connectedActors.Add (other.GetComponent<IActor> ());
 		}
 	}
 
@@ -96,7 +93,6 @@ public class PlayerController : MonoBehaviour, IActor {
 			if (actions.ContainsKey ("poweron") && actions ["poweron"] != "false") {
 				goImPowering.Remove (other.gameObject);
 			}
-		//	connectedActors.Remove(other.GetComponent<IActor> ());
 
 		}
 	}
@@ -112,49 +108,15 @@ public class PlayerController : MonoBehaviour, IActor {
 	}
 		
 
-	private void ConductElectricity2(bool isAddingPower, string color, Dictionary<string,string> _actions) {
-		if (isAddingPower) {
-			if (_actions.ContainsKey ("poweredByPlayer") && _actions ["poweredByPlayer"] == "true") {
-				return;
-			}
-			powerSourcesCount++;
-			if (powerSourcesCount >= 1 && powerSourcesCount-1 == 0) {
-				actions ["color"] = color;
-				Color newCol;
-				ColorUtility.TryParseHtmlString (color, out newCol);
-				GetComponent<SpriteRenderer> ().color = newCol;
-				actions["poweron"] = "true";
-			}
-		} else {
-			powerSourcesCount--;
-			if (powerSourcesCount == 0 && powerSourcesCount+1 == 1) {
-				GetComponent<SpriteRenderer> ().color = startColor;
-				actions["poweron"] = "false";
-				foreach (IActor conActor in connectedActors) {
-					conActor.Trigger (new Dictionary<string, string> () { { "poweroff", "true" } }, new List<string> {"player"}, gameObject);
-				}
-
-			}
-		}
-	}
 
 	private void ConductElectricity(bool isAddingPower, string color, Dictionary<string, string> _actions, GameObject source) {
 		if (isAddingPower) {
-			//if (powerSources.Count == 0) {
-			//	if (_entities.Contains ("player")) {
-			//		actions ["poweredByPlayer"] = "true";
-			//		Debug.Log ("powered by player");
-			//	}
-			//}
+
 			if (!powerOrigins.Contains (_actions ["poweron"])) { 
 				AddPower (source, color, _actions ["poweron"]);
 			}
+
 		} else {
-			//	if (powerSources.Count == 1) {
-			//		if (actions ["poweredByPlayer"] == "false" && _entities.Contains("player")) {
-			//			return;
-			//		}
-			//	}
 
 			RemovePower (source, _actions ["poweroff"]);	
 
@@ -212,10 +174,6 @@ public class PlayerController : MonoBehaviour, IActor {
 
 		// turn self offline if online
 		if (powerSources.Count == 0 && powerSources.Count + 1 == 1) {
-			//if (actions ["poweredByPlayer"] == "true") {
-
-			//}
-			//actions ["poweredByPlayer"] = "false";
 			GetComponent<SpriteRenderer> ().color = startColor;
 			actions ["poweron"] = "false";
 

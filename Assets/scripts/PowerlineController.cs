@@ -34,22 +34,12 @@ public class PowerlineController : MonoBehaviour, IActor {
 
 	private void ConductElectricity(bool isAddingPower, string color, Dictionary<string, string> _actions, GameObject source) {
 		if (isAddingPower) {
-			//if (powerSources.Count == 0) {
-			//	if (_entities.Contains ("player")) {
-			//		actions ["poweredByPlayer"] = "true";
-			//		Debug.Log ("powered by player");
-			//	}
-			//}
+
 			if (!powerOrigins.Contains (_actions ["poweron"])) { 
 				AddPower (source, color, _actions ["poweron"]);
 			}
 
 		} else {
-		//	if (powerSources.Count == 1) {
-		//		if (actions ["poweredByPlayer"] == "false" && _entities.Contains("player")) {
-		//			return;
-		//		}
-		//	}
 
 			RemovePower (source, _actions ["poweroff"]);	
 		}
