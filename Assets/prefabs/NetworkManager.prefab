@@ -126,6 +126,7 @@ MonoBehaviour:
   isNetworkActive: 0
   matchMaker: {fileID: 0}
   playerPrefabIndex: 1
+  ipDisplayer: {fileID: 0}
 --- !u!114 &114877068940331280
 MonoBehaviour:
   m_ObjectHideFlags: 1

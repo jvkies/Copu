@@ -2,6 +2,8 @@
 using UnityEngine.Networking;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Net;
+using System.Net.Sockets;
 
 public class NetworkManagerCustom : NetworkManager
 {
@@ -9,8 +11,10 @@ public class NetworkManagerCustom : NetworkManager
 	// in the Spawn Info -> Registered Spawnable Prefabs section 
 	public short playerPrefabIndex = 1;
 
+	public Text ipDisplayer;
+
 	void Start() {
-		if (GameManager.instance.gameMode == "single") {
+		if (GameManager.instance.gameMode != "lan") {
 			gameObject.SetActive (false);
 		}
 	}
@@ -19,6 +23,8 @@ public class NetworkManagerCustom : NetworkManager
 	{
 		playerPrefabIndex = 0;
 		NetworkServer.RegisterHandler(MsgTypes.PlayerPrefab, OnResponsePrefab);
+		//StartCoroutine (GetLocalIPAddress() )
+		ipDisplayer.text = GetLocalIPAddressWithSocket();
 		base.OnStartServer();
 	}
 
@@ -67,6 +73,21 @@ public class NetworkManagerCustom : NetworkManager
 			playerPrefabIndex= 4;
 		}
 	}
+		
+	public string GetLocalIPAddressWithSocket() {
+		// a little bit hacky but works
+		//
+		// check if user is online
+		// System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable();
+
+		string localIP;
+		using (Socket socket = new Socket (AddressFamily.InterNetwork, SocketType.Dgram, 0)) {
+			socket.Connect ("8.8.8.8", 65530);
+			IPEndPoint endPoint = socket.LocalEndPoint as IPEndPoint;
+			localIP = endPoint.Address.ToString ();
+		}
+		return localIP;
+	}
 
 
 }
@@ -81,3 +102,5 @@ public class MsgTypes
 		public short prefabIndex;
 	}
 }
+
+

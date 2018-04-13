@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class WinZone : MonoBehaviour, ITrigger {
+public class WinZone : MonoBehaviour, IActor {
 
 	private int playerCounter;
 
@@ -23,17 +23,15 @@ public class WinZone : MonoBehaviour, ITrigger {
 	}
 
 
-	public void Trigger(List<string> entities, float mass) {
-		if (entities.Contains ("player")) {
+	public void Trigger(Dictionary<string, string> actions, List<string> entities, GameObject source) {
+		if (entities.Contains ("player") && actions.ContainsKey("mass") && float.Parse(actions["mass"]) > 0) {
 			ChangePlayerInZone (1);
 		}
-	}
-
-	public void StopTrigger(List<string> entities, float mass) {
-		if (entities.Contains ("player")) {
+		if (entities.Contains ("player") && actions.ContainsKey("mass") && float.Parse(actions["mass"]) < 0) {
 			ChangePlayerInZone (-1);
 		}
 	}
+
 
 	public void ChangePlayerInZone(int amount) {
 		playerCounter += amount;

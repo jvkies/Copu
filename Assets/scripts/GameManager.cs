@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour {
 	public string activePlayerTag = "Player";
 	public GameObject player1Prefab;
 	public GameObject player2Prefab;
+	public GameObject networkManager;
 
 	void Awake () {
 		if (instance == null) {
@@ -104,7 +105,7 @@ public class GameManager : MonoBehaviour {
 
 	public void NewGame() {
 		InitNewGame ();
-		LoadScene ("Level1");
+		SceneManager.LoadScene ("Level1");
 	}
 
 	private void InitNewGame() {
@@ -112,7 +113,13 @@ public class GameManager : MonoBehaviour {
 
 	public void LoadScene(string sceneName) {
 		Time.timeScale = 1;
-		SceneManager.LoadScene (sceneName);
+		isPlayerAbleToInteract = true;
+
+		if (gameMode == "lan") {
+			NetworkManagerCustom.singleton.ServerChangeScene(sceneName);
+		} else {
+			SceneManager.LoadScene (sceneName);
+		}
 	}
 
 	public void GameOver() {

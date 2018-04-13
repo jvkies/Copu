@@ -61,7 +61,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1744877230314766}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.93463993, y: -2.794193, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4573915733708794}
@@ -112,6 +112,7 @@ Camera:
   m_TargetEye: 3
   m_HDR: 0
   m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -148,7 +149,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.008314252, y: -0.003023386}
+  m_Offset: {x: -0.009929538, y: -0.000600338}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -159,7 +160,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.2715068, y: 0.59395325}
+  m_Size: {x: 0.25212288, y: 0.57618475}
   m_EdgeRadius: 0
 --- !u!81 &81309971932161936
 AudioListener:
@@ -287,10 +288,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da98415d0e5f142c4b24fb7a36aee484, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  powerSources: 0
   runningSpeed: 50000
   rotationSpeed: 10
   playerCam: {fileID: 1942427901498160}
   entities: []
+  powerOrigin: []
 --- !u!124 &124671621593208464
 Behaviour:
   m_ObjectHideFlags: 1

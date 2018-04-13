@@ -10,6 +10,7 @@ TagManager:
   - NetworkManager
   - Door2
   - Door3
+  - powerline
   layers:
   - Default
   - TransparentFX

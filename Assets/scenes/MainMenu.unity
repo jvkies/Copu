@@ -833,6 +833,11 @@ Prefab:
       propertyPath: cameraC
       value: 
       objectReference: {fileID: 497305339}
+    - target: {fileID: 114974020412649818, guid: bd2b7800307a946ba8d20d8bd12bca68,
+        type: 2}
+      propertyPath: networkManager
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bd2b7800307a946ba8d20d8bd12bca68, type: 2}
   m_IsPrefabParent: 0
