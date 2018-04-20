@@ -13,11 +13,13 @@ public class GameManager : MonoBehaviour {
 	public static bool isOnSceneLoadedCalled;			// prevent function OnSceneLoaded be called twice (http://www.wenyu-wu.com/blogs/unity-when-using-onlevelwasloaded-and-dontdestroyonload-together/)
 
 	private CameraController cameraC;
+	private List<string> nonGameScenes = new List<string>() {"MainMenu","LevelSelect"};
 
 	public bool isGameLost = false;
 	public bool isPlayerAbleToInteract = true;
 	public string gameMode = "single"; 					// "single" for single player, "coop" for local coop, "lan" for lan multiplayer
 	public string activePlayerTag = "Player";
+	public int activeLevel = 0;							// Nr of the level the player is currently in
 	public GameObject player1Prefab;
 	public GameObject player2Prefab;
 	public GameObject networkManager;
@@ -39,8 +41,8 @@ public class GameManager : MonoBehaviour {
 		if (!isOnSceneLoadedCalled) {
 			isOnSceneLoadedCalled = true;				// i dont know why, but this sometimes get called twice, hence the workaround
 
-			if (SceneManager.GetActiveScene ().name != "MainMenu") {
-				if (gameMode == "single") {
+			if (!nonGameScenes.Contains(SceneManager.GetActiveScene ().name)) {
+				if (gameMode == "single" || gameMode == "coop") {
 					cameraC = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<CameraController> ();
 					SpawnPlayer ();
 				}
@@ -105,7 +107,8 @@ public class GameManager : MonoBehaviour {
 
 	public void NewGame() {
 		InitNewGame ();
-		SceneManager.LoadScene ("Level1");
+
+		LoadScene ("LevelSelect");
 	}
 
 	private void InitNewGame() {
@@ -115,13 +118,13 @@ public class GameManager : MonoBehaviour {
 		Time.timeScale = 1;
 		isPlayerAbleToInteract = true;
 
-		if (gameMode == "lan") {
+		if (gameMode == "lan" && !nonGameScenes.Contains(SceneManager.GetActiveScene().name)) {
 			NetworkManagerCustom.singleton.ServerChangeScene(sceneName);
 		} else {
 			SceneManager.LoadScene (sceneName);
 		}
 	}
-
+		
 	public void GameOver() {
 		LoadScene ("GameOver");
 	}

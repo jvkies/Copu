@@ -27,6 +27,7 @@ GameObject:
   - component: {fileID: 114375230947748278}
   - component: {fileID: 114405538392915804}
   - component: {fileID: 114561746102776318}
+  - component: {fileID: 114905755817323952}
   m_Layer: 0
   m_Name: player2
   m_TagString: Player2
@@ -209,6 +210,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1744877230314766}
+  transitionDuration: 2.5
+  cameraTransition:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &114375230947748278
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -288,12 +296,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da98415d0e5f142c4b24fb7a36aee484, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerSources: 0
   runningSpeed: 50000
   rotationSpeed: 10
   playerCam: {fileID: 1942427901498160}
-  entities: []
-  powerOrigin: []
+--- !u!114 &114905755817323952
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1744877230314766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b90290981dd84d4984222420c4cb62e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!124 &124671621593208464
 Behaviour:
   m_ObjectHideFlags: 1

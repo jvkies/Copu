@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class WinZone : MonoBehaviour, IActor {
+public class WinZone : MonoBehaviour {
 
 	private int playerCounter;
 
@@ -12,18 +12,7 @@ public class WinZone : MonoBehaviour, IActor {
 	public GameObject winPanel;
 	public GameObject waitingForPlayerPanel;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
-
-	public void Trigger(Dictionary<string, string> actions, List<string> entities, GameObject source) {
+	public void Trigger_REMOVE(Dictionary<string, string> actions, List<string> entities, GameObject source) {
 		if (entities.Contains ("player") && actions.ContainsKey("mass") && float.Parse(actions["mass"]) > 0) {
 			ChangePlayerInZone (1);
 		}
@@ -31,8 +20,7 @@ public class WinZone : MonoBehaviour, IActor {
 			ChangePlayerInZone (-1);
 		}
 	}
-
-
+		
 	public void ChangePlayerInZone(int amount) {
 		playerCounter += amount;
 
@@ -48,6 +36,9 @@ public class WinZone : MonoBehaviour, IActor {
 			GameManager.instance.isPlayerAbleToInteract = false;
 			waitingForPlayerPanel.SetActive (false);
 			winPanel.SetActive(true);
+			if (GameManager.instance.activeLevel > PlayerPrefs.GetInt ("highestLevel", 0)) {
+				PlayerPrefs.SetInt ("highestLevel", GameManager.instance.activeLevel);
+			}
 
 			Debug.Log ("You win");
 
@@ -60,5 +51,18 @@ public class WinZone : MonoBehaviour, IActor {
 			GameManager.instance.LoadScene (transferToSceneName);
 		}
 	}
+
+	void OnTriggerEnter2D(Collider2D other) {
+		if (other.tag == "Player" || other.tag == "Player2") {
+			ChangePlayerInZone (1);
+		}
+	}
+
+	void OnTriggerExit2D(Collider2D other) {
+		if (other.tag == "Player" || other.tag == "Player2") {
+			ChangePlayerInZone (-1);
+		}
+	}
+
 
 }

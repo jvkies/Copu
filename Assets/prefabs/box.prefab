@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212466475621582928}
   - component: {fileID: 50396149932230462}
   - component: {fileID: 61029249381139528}
-  - component: {fileID: 114400240245709004}
+  - component: {fileID: 114732047915891704}
   m_Layer: 0
   m_Name: box
   m_TagString: Untagged
@@ -56,7 +56,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 15
   m_LinearDrag: 10
-  m_AngularDrag: 5
+  m_AngularDrag: 50
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
@@ -88,7 +88,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.6, y: 0.6}
   m_EdgeRadius: 0
---- !u!114 &114400240245709004
+--- !u!114 &114732047915891704
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -96,10 +96,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1084829664213422}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b4eae9545e5d4d658160f26b91cabf7, type: 3}
+  m_Script: {fileID: 11500000, guid: 6b90290981dd84d4984222420c4cb62e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entities: []
 --- !u!212 &212466475621582928
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -133,7 +132,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -819273417
   m_SortingLayer: 2
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: d266245b4bd934f8387f2fedc053947e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

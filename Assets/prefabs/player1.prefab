@@ -64,6 +64,8 @@ GameObject:
   - component: {fileID: 114307428327606968}
   - component: {fileID: 114696252121054848}
   - component: {fileID: 114618376539285328}
+  - component: {fileID: 114951874560702178}
+  - component: {fileID: 114039590371338894}
   m_Layer: 0
   m_Name: player1
   m_TagString: Player
@@ -243,6 +245,20 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114039590371338894
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1923111091177840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: becb050069f1e49ceb7d5dedca578661, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goImPowering: []
+  powerSources: []
+  powerOrigins: []
 --- !u!114 &114307428327606968
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -297,12 +313,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da98415d0e5f142c4b24fb7a36aee484, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerSources: 0
   runningSpeed: 70000
   rotationSpeed: 10
   playerCam: {fileID: 1030402773429402}
-  entities: []
-  powerOrigin: []
 --- !u!114 &114618376539285328
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -339,6 +352,17 @@ MonoBehaviour:
   - {fileID: 114517369485814622}
   - {fileID: 20503369317922528}
   - {fileID: 81720009588716550}
+--- !u!114 &114951874560702178
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1923111091177840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b90290981dd84d4984222420c4cb62e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114960020439011926
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -351,6 +375,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1923111091177840}
+  transitionDuration: 0.5
+  cameraTransition:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!124 &124862187727123026
 Behaviour:
   m_ObjectHideFlags: 1

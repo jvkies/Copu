@@ -147,6 +147,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2884bc96761c4e36965736064d9e4c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  powerSourcesToOpen: 1
+  amountNeeedText: {fileID: 0}
   door: {fileID: 1837813908686576}
 --- !u!212 &212485588583227626
 SpriteRenderer:

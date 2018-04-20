@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PowerlineController : MonoBehaviour, IActor {
+public class PowerlineController : MonoBehaviour {
 
 	private Color startColor;
-	private List<string> entities;
+//	private List<string> entities;
 	private Dictionary<string, string> actions;
 	public List<GameObject> goImPowering;			// list of gameObjects i am sending power to
 	public List<GameObject> powerSources;			// list of gameObjects power is send to me
@@ -17,8 +17,8 @@ public class PowerlineController : MonoBehaviour, IActor {
 		powerSources = new List<GameObject> {};
 		powerOrigins = new List<string> {};
 
-		entities = new List<string> { "conductive" };
-		actions = new Dictionary<string, string> (){{"poweron", "false"},{"poweredByPlayer", "false"},{"color", ""}};
+		//entities = new List<string> { "conductive" };
+		actions = new Dictionary<string, string> (){{"poweron", "false"},{"color", ""}};
 		//connectedConductors = new List<IActor>() ;
 	}
 
@@ -72,12 +72,12 @@ public class PowerlineController : MonoBehaviour, IActor {
 
 		foreach (Collider2D col in toPowerCols) {
 			if (col != null) {	// toPowerCols.Length is 128
-				if (col.gameObject.GetComponent<IActor> () != null && !powerSources.Contains (col.gameObject)) {
-					col.gameObject.GetComponent<IActor> ().Trigger (actions, entities, gameObject);
-					if (col.gameObject.name != gameObject.name && !goImPowering.Contains (col.gameObject)) {
-						goImPowering.Add (col.gameObject);
-					}
+				//		if (col.gameObject.GetComponent<IActor> () != null && !powerSources.Contains (col.gameObject)) {
+				//			col.gameObject.GetComponent<IActor> ().Trigger (actions, entities, gameObject);
+				if (col.gameObject.name != gameObject.name && !goImPowering.Contains (col.gameObject)) {
+					goImPowering.Add (col.gameObject);
 				}
+			//}
 			}
 		}
 
@@ -90,7 +90,7 @@ public class PowerlineController : MonoBehaviour, IActor {
 
 		// remove power from all connected IActor
 		for (int i = 0; i < goImPowering.Count; i++) {
-			goImPowering [i].GetComponent<IActor> ().Trigger (new Dictionary<string, string> () { { "poweroff", powerOirign } }, entities, gameObject);
+	//		goImPowering [i].GetComponent<IActor> ().Trigger (new Dictionary<string, string> () { { "poweroff", powerOirign } }, entities, gameObject);
 		}
 
 		// turn self offline if online
@@ -108,18 +108,18 @@ public class PowerlineController : MonoBehaviour, IActor {
 
 
 	void OnTriggerEnter2D(Collider2D other) {
-		if (other.GetComponent<IActor> () != null && actions.ContainsKey("poweron") && actions["poweron"] != "false" && !goImPowering.Contains(other.gameObject)) {
+	//	if (other.GetComponent<IActor> () != null && actions.ContainsKey("poweron") && actions["poweron"] != "false" && !goImPowering.Contains(other.gameObject)) {
 			goImPowering.Add (other.gameObject);
-			other.GetComponent<IActor> ().Trigger (actions, entities, gameObject);
-		}
+	//		other.GetComponent<IActor> ().Trigger (actions, entities, gameObject);
+		//}
 	}
 
 	void OnTriggerExit2D(Collider2D other) {
-		if (other.GetComponent<IActor> () != null && actions.ContainsKey("poweron") && actions ["poweron"] != "false" && goImPowering.Contains(other.gameObject)) {
+	//	if (other.GetComponent<IActor> () != null && actions.ContainsKey("poweron") && actions ["poweron"] != "false" && goImPowering.Contains(other.gameObject)) {
 			goImPowering.Remove (other.gameObject);
 			// TODO: dont just send the last powerOrigin in List, send the right one..
-			other.GetComponent<IActor> ().Trigger (new Dictionary<string, string>() {{"poweroff", powerOrigins [powerOrigins.Count-1]}}, entities, gameObject);
-		}
+	//		other.GetComponent<IActor> ().Trigger (new Dictionary<string, string>() {{"poweroff", powerOrigins [powerOrigins.Count-1]}}, entities, gameObject);
+		//}
 	}
 		
 }
